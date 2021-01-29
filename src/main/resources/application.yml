@@ -1,0 +1,32 @@
+spring:
+  main:
+    log-startup-info: false
+  profiles:
+    active: dev
+
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVERS:localhost:9092}
+    listener:
+      ack-mode: manual_immediate
+    producer:
+      topic: ${TOPIC_OUT:kt.outgoing}
+      retries: 3
+      acks: 1
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: kafka-template
+      topic: ${TOPIC_IN:kt.incoming}
+      auto-offset-reset: earliest
+      max-poll-records: 1
+      bootstrap-servers: ${KAFKA_SERVERS:localhost:9092}
+      enable-auto-commit: false
+      fetch-max-wait: 20000
+      key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      properties:
+        spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
+        spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
+        spring.json.trusted.packages: com.kafkatemplate.model.message
+        spring.json.use.type.headers: false
+        spring.json.value.default.type: Message
