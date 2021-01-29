@@ -38,7 +38,7 @@ public abstract class Message {
     
     private Status status;
     
-    @JsonProperty("correlation_id")
+    @JsonProperty("trace_id")
     private UUID traceId;
 
     public Message(String eventType) {

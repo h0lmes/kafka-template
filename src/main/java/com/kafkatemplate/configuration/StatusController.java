@@ -71,6 +71,26 @@ public class StatusController {
             this.uptime = uptime;
             this.buildNumber = buildNumber;
         }
+
+        public String getApplicationState() {
+            return applicationState;
+        }
+
+        public String getApplicationName() {
+            return applicationName;
+        }
+
+        public String getServerName() {
+            return serverName;
+        }
+
+        public String getUptime() {
+            return uptime;
+        }
+
+        public String getBuildNumber() {
+            return buildNumber;
+        }
     }
 
 }
