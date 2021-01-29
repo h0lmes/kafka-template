@@ -27,14 +27,14 @@ public class KafkaConsumer {
     
     @KafkaHandler
     public void listen(PersonCreated message, @Headers MessageHeaders headers, Acknowledgment acknowledgment) {
-        log.info("Got Message: {} Headers: {}", message, headersToString(headers));
+        log.info("Got Message: {}\nHeaders: {}", message, headersToString(headers));
         personCreatedHandler.consumeMessage(message);
         acknowledgment.acknowledge();
     }
     
     @KafkaHandler
     public void listen(StatusCheck message, @Headers MessageHeaders headers, Acknowledgment acknowledgment) {
-        log.debug("Got status check message: {} Headers: {}", message, headersToString(headers));
+        log.debug("Got status check message: {}\nHeaders: {}", message, headersToString(headers));
         acknowledgment.acknowledge();
     }
 

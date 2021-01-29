@@ -52,4 +52,14 @@ public class Payload {
     public void setErrorDescription(String errorDescription) {
         this.errorDescription = errorDescription;
     }
+
+    @Override
+    public String toString() {
+        return "Payload{" +
+                "id=" + id +
+                ", value=" + value +
+                ", error='" + error + '\'' +
+                ", errorDescription='" + errorDescription + '\'' +
+                '}';
+    }
 }

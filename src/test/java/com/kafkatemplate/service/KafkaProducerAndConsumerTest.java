@@ -105,11 +105,11 @@ public class KafkaProducerAndConsumerTest {
     @Test
     public void producerAndConsumerTestWithPayload() throws InterruptedException, JsonProcessingException {
         String expectedMessage = "{\"event\":\"created\",\"status\":\"ok\","
-                + "\"payload\":{\"id\":\"84152da7-844d-4881-a0a3-41294cd12a71\",\"value\":\"be80faa9-f19a-4fc1-b569-a5b644090a27\"},"
-                + "\"emitted_at\":\"2020-10-10T07:32:53.000Z\",\"trace_id\":\"e872862f-2dcb-4c17-8708-6973d4019c0c\"}";
-        UUID traceId = UUID.fromString("e872862f-2dcb-4c17-8708-6973d4019c0c");
-        UUID value = UUID.fromString("be80faa9-f19a-4fc1-b569-a5b644090a27");
-        UUID id = UUID.fromString("84152da7-844d-4881-a0a3-41294cd12a71");
+                + "\"payload\":{\"id\":\"11111111-1111-4000-1111-111111111111\",\"value\":\"22222222-2222-4000-2222-222222222222\"},"
+                + "\"emitted_at\":\"2021-01-29T12:00:00.000Z\",\"trace_id\":\"00000000-0000-4000-0000-000000000000\"}";
+        UUID traceId = UUID.fromString("00000000-0000-4000-0000-000000000000");
+        UUID value = UUID.fromString("22222222-2222-4000-2222-222222222222");
+        UUID id = UUID.fromString("11111111-1111-4000-1111-111111111111");
         
         Payload payloadSuccess = new Payload();
         payloadSuccess.setValue(value);
@@ -117,7 +117,7 @@ public class KafkaProducerAndConsumerTest {
         
         PersonCreated event = new PersonCreated();
         event.setStatus(Status.OK);
-        event.setEmittedAt(LocalDateTime.of(2020, 10, 10, 7, 32, 53, 0));
+        event.setEmittedAt(LocalDateTime.of(2021, 1, 29, 12, 0, 0, 0));
         event.setTraceId(traceId);
         event.setPayload(payloadSuccess);
         
@@ -136,12 +136,12 @@ public class KafkaProducerAndConsumerTest {
     @Test
     public void producerAndConsumerAndHandlerTestWithPayloadWithError() throws InterruptedException, JsonProcessingException {
         String expectedMessage = "{\"event\":\"linked\",\"status\":\"fail\",\"payload\":{\"error\":\"Error\","
-            + "\"errorDescription\":\"Error description\",\"id\":\"84152da7-844d-4881-a0a3-41294cd12a71\",\"value\":"
-            + "\"be80faa9-f19a-4fc1-b569-a5b644090a27\"},\"emitted_at\":\"2020-10-10T07:32:53.000Z\",\"trace_id\":"
-            + "\"e872862f-2dcb-4c17-8708-6973d4019c0c\" }";
-        UUID traceId = UUID.fromString("e872862f-2dcb-4c17-8708-6973d4019c0c");
-        UUID value = UUID.fromString("be80faa9-f19a-4fc1-b569-a5b644090a27");
-        UUID id = UUID.fromString("84152da7-844d-4881-a0a3-41294cd12a71");
+            + "\"errorDescription\":\"Error description\",\"id\":\"11111111-1111-4000-1111-111111111111\",\"value\":"
+            + "\"22222222-2222-4000-2222-222222222222\"},\"emitted_at\":\"2021-01-29T12:00:00.000Z\",\"trace_id\":"
+            + "\"00000000-0000-4000-0000-000000000000\" }";
+        UUID traceId = UUID.fromString("00000000-0000-4000-0000-000000000000");
+        UUID value = UUID.fromString("22222222-2222-4000-2222-222222222222");
+        UUID id = UUID.fromString("11111111-1111-4000-1111-111111111111");
         
         String error = "Error";
         String errorDescription = "Error description";
@@ -154,7 +154,7 @@ public class KafkaProducerAndConsumerTest {
         
         IdentityLinked event = new IdentityLinked();
         event.setStatus(Status.FAIL);
-        event.setEmittedAt(LocalDateTime.of(2020, 10, 10, 7, 32, 53, 0));
+        event.setEmittedAt(LocalDateTime.of(2021, 1, 29, 12, 0, 0, 0));
         event.setTraceId(traceId);
         event.setPayload(payload);
         
