@@ -37,8 +37,8 @@ public class StatusCheck extends Message {
 
     @Override
     public String toString() {
-        return "StatusCheck{" +
-                "payload=" + payload +
-                '}';
+        return "StatusCheck{"
+                + "payload=" + payload
+                + '}';
     }
 }

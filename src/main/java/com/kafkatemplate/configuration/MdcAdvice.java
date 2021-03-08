@@ -13,7 +13,7 @@ import com.kafkatemplate.model.message.Message;
 @Component
 public class MdcAdvice {
 
-    public static final String MDC_TOKEN_KEY = "HDC.correlationId";
+    public static final String MDC_TOKEN_KEY = "HDC.traceId";
 
     @Pointcut("execution(public * com.kafkatemplate.service.KafkaConsumer.*(..))")
     private void injectMdcInfo() {
@@ -31,8 +31,8 @@ public class MdcAdvice {
                     break;
                 }
             }
-            String correlationId = extractToken(message);
-            MDC.put(MDC_TOKEN_KEY, correlationId);
+            String traceId = extractToken(message);
+            MDC.put(MDC_TOKEN_KEY, traceId);
             return joinPoint.proceed();
         } finally {
             MDC.remove(MDC_TOKEN_KEY);

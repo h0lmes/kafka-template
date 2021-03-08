@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.UUID;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -55,11 +56,11 @@ public class Payload {
 
     @Override
     public String toString() {
-        return "Payload{" +
-                "id=" + id +
-                ", value=" + value +
-                ", error='" + error + '\'' +
-                ", errorDescription='" + errorDescription + '\'' +
-                '}';
+        return "Payload{"
+                + "id=" + id
+                + ", value=" + value
+                + ", error='" + error + '\''
+                + ", errorDescription='" + errorDescription + '\''
+                + '}';
     }
 }

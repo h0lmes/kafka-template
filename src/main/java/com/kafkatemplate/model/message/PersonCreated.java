@@ -37,8 +37,8 @@ public class PersonCreated extends Message {
 
     @Override
     public String toString() {
-        return "PersonCreated{" +
-                "payload=" + payload +
-                '}';
+        return "PersonCreated{"
+                + "payload=" + payload
+                + '}';
     }
 }

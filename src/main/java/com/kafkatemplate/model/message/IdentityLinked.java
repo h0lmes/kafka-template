@@ -37,8 +37,8 @@ public class IdentityLinked extends Message {
 
     @Override
     public String toString() {
-        return "IdentityLinked{" +
-                "payload=" + payload +
-                '}';
+        return "IdentityLinked{"
+                + "payload=" + payload
+                + '}';
     }
 }
